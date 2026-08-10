@@ -1,0 +1,396 @@
+/* ========================================
+   QUIZ DE ORIENTAÇÃO PROFISSIONAL
+======================================== */
+
+.quiz-formulario {
+  max-width: 900px;
+  margin: 0 auto;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 22px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+.quiz-pergunta {
+  margin-bottom: 28px;
+
+  padding-bottom: 24px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+
+.quiz-pergunta:last-of-type {
+  border-bottom: none;
+}
+
+
+.quiz-pergunta h3 {
+  margin-bottom: 14px;
+
+  color: #111827;
+
+  font-size: 1.1rem;
+}
+
+
+.quiz-pergunta label {
+  display: block;
+
+  background: #f8fafc;
+
+  padding: 12px 14px;
+
+  margin-bottom: 9px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  color: #374151;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.quiz-pergunta label:hover {
+  background: #eef2ff;
+
+  border-color: #7c3aed;
+}
+
+
+.quiz-pergunta input {
+  margin-right: 8px;
+}
+
+
+.resultado-quiz {
+  max-width: 900px;
+
+  margin: 28px auto 0;
+
+  padding: 28px;
+
+  background: white;
+
+  border-radius: 22px;
+
+  border: 1px solid #ddd6fe;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+
+.resultado-quiz h3 {
+  color: #2563eb;
+
+  margin-bottom: 12px;
+}
+
+
+.resultado-quiz p {
+  color: #374151;
+
+  margin-bottom: 12px;
+}
+
+
+.resultado-quiz ul {
+  padding-left: 22px;
+
+  margin-bottom: 15px;
+}
+
+
+.area-quiz {
+  background: #f5f3ff;
+
+  border:
+    1px solid #ddd6fe;
+
+  border-left:
+    5px solid #7c3aed;
+
+  color: #5b21b6;
+
+  font-size: 1.2rem;
+
+  font-weight: bold;
+
+  padding: 16px;
+
+  margin: 16px 0;
+
+  border-radius: 14px;
+}
+
+
+
+/* ========================================
+   METAS SEMANAIS
+======================================== */
+
+.metas-area {
+  margin-top: 45px;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 22px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.06);
+
+  scroll-margin-top: 120px;
+}
+
+
+.metas-area h3 {
+  color: #111827;
+
+  font-size: 1.7rem;
+
+  margin-bottom: 8px;
+}
+
+
+.metas-area > p {
+  color: #4b5563;
+
+  margin-bottom: 22px;
+}
+
+
+.metas-formulario label {
+  display: block;
+
+  font-weight: bold;
+
+  color: #374151;
+
+  margin-bottom: 6px;
+}
+
+
+.metas-linha {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.metas-linha input {
+  flex: 1;
+
+  padding: 13px;
+
+  border-radius: 12px;
+
+  border: 1px solid #d1d5db;
+
+  font-size: 1rem;
+
+  outline: none;
+}
+
+
+.metas-linha input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+
+.metas-linha .botao-principal {
+  margin-top: 0;
+
+  white-space: nowrap;
+}
+
+
+.metas-resumo {
+  margin: 22px 0;
+
+  background: #eef2ff;
+
+  border-left:
+    5px solid #7c3aed;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  color: #3730a3;
+}
+
+
+.lista-metas {
+  display: grid;
+
+  gap: 12px;
+}
+
+
+.meta-card {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 15px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
+  border-left:
+    5px solid #2563eb;
+
+  padding: 15px;
+
+  border-radius: 14px;
+}
+
+
+.meta-conteudo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  flex: 1;
+}
+
+
+.checkbox-meta {
+  width: 19px;
+
+  height: 19px;
+
+  cursor: pointer;
+}
+
+
+.meta-conteudo span {
+  color: #374151;
+
+  word-break: break-word;
+}
+
+
+.meta-concluida {
+  border-left-color: #22c55e;
+
+  background: #f0fdf4;
+}
+
+
+.meta-concluida span {
+  text-decoration: line-through;
+
+  color: #6b7280;
+}
+
+
+.botao-excluir-meta {
+  background: #ef4444;
+
+  color: white;
+
+  border: none;
+
+  padding: 8px 13px;
+
+  border-radius: 9px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+.botao-excluir-meta:hover {
+  opacity: 0.85;
+}
+
+
+.sem-metas {
+  color: #6b7280;
+
+  padding: 15px;
+
+  background: #f8fafc;
+
+  border-radius: 12px;
+
+  text-align: center;
+}
+
+
+
+/* ========================================
+   RESPONSIVO DAS NOVAS FUNCIONALIDADES
+======================================== */
+
+@media (max-width: 650px) {
+
+  .quiz-formulario {
+    padding: 22px;
+  }
+
+
+  .resultado-quiz {
+    padding: 22px;
+  }
+
+
+  .metas-area {
+    padding: 22px;
+  }
+
+
+  .metas-linha {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .metas-linha .botao-principal {
+    width: 100%;
+  }
+
+
+  .meta-card {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .botao-excluir-meta {
+    width: 100%;
+  }
+
+}
