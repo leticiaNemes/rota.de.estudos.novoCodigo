@@ -613,6 +613,7 @@ const planos = {
   }
 };
 
+
 /* =========================================================
    BANCO DE PERGUNTAS DO QUIZ
 ========================================================= */
@@ -1236,6 +1237,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   configurarMetasSemanais();
 
+  configurarKanban();
+
   carregarAnotacoesSalvas();
 
   carregarMetasSemanais();
@@ -1267,7 +1270,8 @@ function normalizarTexto(texto) {
 
 function identificarAreaPeloObjetivo(texto) {
 
-  const objetivo = normalizarTexto(texto);
+  const objetivo =
+    normalizarTexto(texto);
 
 
   if (
@@ -3318,6 +3322,850 @@ function apagarMeta(id) {
 
 
   carregarMetasSemanais();
+
+}
+
+
+/* =========================================================
+   KANBAN DO PROJETO
+========================================================= */
+
+const kanbanInicial = [
+
+  {
+    id: "progresso-plano",
+
+    titulo:
+      "Controle de progresso do plano de estudos",
+
+    status: "afazer",
+
+    tarefas: [
+      "Criar indicador de progresso",
+      "Adicionar opção para concluir etapas",
+      "Calcular a porcentagem concluída",
+      "Salvar o progresso do usuário",
+      "Testar a funcionalidade"
+    ],
+
+    concluidas: []
+  },
+
+
+  {
+    id: "cronometro-foco",
+
+    titulo:
+      "Cronômetro de foco",
+
+    status: "afazer",
+
+    tarefas: [
+      "Montar a interface do cronômetro",
+      "Criar contagem regressiva",
+      "Criar botão iniciar",
+      "Criar botão pausar e reiniciar",
+      "Testar o funcionamento"
+    ],
+
+    concluidas: []
+  },
+
+
+  {
+    id: "quiz-revisao",
+
+    titulo:
+      "Quiz de revisão dos conteúdos estudados",
+
+    status: "concluido",
+
+    tarefas: [
+      "Criar perguntas relacionadas aos conteúdos",
+      "Criar alternativas de resposta",
+      "Definir as respostas corretas",
+      "Verificar os acertos do usuário",
+      "Calcular a pontuação final",
+      "Apresentar o resultado",
+      "Indicar conteúdos para revisão",
+      "Testar respostas e resultados"
+    ],
+
+    concluidas: [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+
+
+  {
+    id: "metas-semanais",
+
+    titulo:
+      "Metas semanais de estudo",
+
+    status: "concluido",
+
+    tarefas: [
+      "Criar campo para adicionar metas",
+      "Criar botão para salvar uma meta",
+      "Permitir marcar metas como concluídas",
+      "Permitir excluir metas",
+      "Salvar as metas no navegador",
+      "Testar inclusão, conclusão e exclusão"
+    ],
+
+    concluidas: [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+
+];
+
+
+/* =========================================================
+   CONFIGURAR KANBAN
+========================================================= */
+
+function configurarKanban() {
+
+  const quadro =
+    document.getElementById(
+      "quadroKanban"
+    );
+
+
+  const botaoResetar =
+    document.getElementById(
+      "resetarKanban"
+    );
+
+
+  if (!quadro) {
+    return;
+  }
+
+
+  carregarKanbanNaTela();
+
+
+  quadro.addEventListener(
+    "dragstart",
+    function (evento) {
+
+      const card =
+        evento.target.closest(
+          "[data-kanban-id]"
+        );
+
+
+      if (!card) {
+        return;
+      }
+
+
+      card.classList.add(
+        "arrastando"
+      );
+
+
+      evento.dataTransfer.setData(
+        "text/plain",
+        card.dataset.kanbanId
+      );
+
+
+      evento.dataTransfer.effectAllowed =
+        "move";
+
+    }
+  );
+
+
+  quadro.addEventListener(
+    "dragend",
+    function (evento) {
+
+      const card =
+        evento.target.closest(
+          "[data-kanban-id]"
+        );
+
+
+      if (card) {
+
+        card.classList.remove(
+          "arrastando"
+        );
+
+      }
+
+
+      document
+        .querySelectorAll(
+          ".kanban-coluna"
+        )
+        .forEach(
+          function (coluna) {
+
+            coluna.classList.remove(
+              "kanban-destino"
+            );
+
+          }
+        );
+
+    }
+  );
+
+
+  quadro.addEventListener(
+    "dragover",
+    function (evento) {
+
+      const coluna =
+        evento.target.closest(
+          ".kanban-coluna"
+        );
+
+
+      if (!coluna) {
+        return;
+      }
+
+
+      evento.preventDefault();
+
+
+      document
+        .querySelectorAll(
+          ".kanban-coluna"
+        )
+        .forEach(
+          function (item) {
+
+            item.classList.remove(
+              "kanban-destino"
+            );
+
+          }
+        );
+
+
+      coluna.classList.add(
+        "kanban-destino"
+      );
+
+    }
+  );
+
+
+  quadro.addEventListener(
+    "drop",
+    function (evento) {
+
+      const coluna =
+        evento.target.closest(
+          ".kanban-coluna"
+        );
+
+
+      if (!coluna) {
+        return;
+      }
+
+
+      evento.preventDefault();
+
+
+      const id =
+        evento.dataTransfer.getData(
+          "text/plain"
+        );
+
+
+      const novoStatus =
+        coluna.dataset.status;
+
+
+      moverCartaoKanban(
+        id,
+        novoStatus
+      );
+
+    }
+  );
+
+
+  quadro.addEventListener(
+    "change",
+    function (evento) {
+
+      const seletorStatus =
+        evento.target.closest(
+          "[data-status-card]"
+        );
+
+
+      if (seletorStatus) {
+
+        moverCartaoKanban(
+          seletorStatus.dataset.statusCard,
+          seletorStatus.value
+        );
+
+        return;
+
+      }
+
+
+      const tarefa =
+        evento.target.closest(
+          "[data-tarefa-kanban]"
+        );
+
+
+      if (tarefa) {
+
+        alternarTarefaKanban(
+          tarefa.dataset.kanbanCard,
+          Number(
+            tarefa.dataset.tarefaKanban
+          ),
+          tarefa.checked
+        );
+
+      }
+
+    }
+  );
+
+
+  if (botaoResetar) {
+
+    botaoResetar.addEventListener(
+      "click",
+      function () {
+
+        localStorage.removeItem(
+          "kanbanRotaEstudos"
+        );
+
+
+        carregarKanbanNaTela();
+
+      }
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CARREGAR KANBAN
+========================================================= */
+
+function carregarKanban() {
+
+  try {
+
+    const salvo =
+      localStorage.getItem(
+        "kanbanRotaEstudos"
+      );
+
+
+    if (!salvo) {
+
+      return JSON.parse(
+        JSON.stringify(
+          kanbanInicial
+        )
+      );
+
+    }
+
+
+    const dados =
+      JSON.parse(salvo);
+
+
+    if (!Array.isArray(dados)) {
+
+      return JSON.parse(
+        JSON.stringify(
+          kanbanInicial
+        )
+      );
+
+    }
+
+
+    return dados;
+
+  } catch (erro) {
+
+    return JSON.parse(
+      JSON.stringify(
+        kanbanInicial
+      )
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SALVAR KANBAN
+========================================================= */
+
+function salvarKanban(cartoes) {
+
+  localStorage.setItem(
+    "kanbanRotaEstudos",
+    JSON.stringify(cartoes)
+  );
+
+}
+
+
+/* =========================================================
+   MOSTRAR KANBAN
+========================================================= */
+
+function carregarKanbanNaTela() {
+
+  const cartoes =
+    carregarKanban();
+
+
+  const statusDisponiveis = [
+    "afazer",
+    "fazendo",
+    "testando",
+    "concluido"
+  ];
+
+
+  statusDisponiveis.forEach(
+    function (status) {
+
+      const lista =
+        document.querySelector(
+          `[data-lista-kanban="${status}"]`
+        );
+
+
+      const contador =
+        document.querySelector(
+          `[data-contador="${status}"]`
+        );
+
+
+      if (!lista) {
+        return;
+      }
+
+
+      const cartoesDaColuna =
+        cartoes.filter(
+          function (cartao) {
+
+            return (
+              cartao.status === status
+            );
+
+          }
+        );
+
+
+      if (contador) {
+
+        contador.textContent =
+          cartoesDaColuna.length;
+
+      }
+
+
+      if (
+        cartoesDaColuna.length === 0
+      ) {
+
+        lista.innerHTML = `
+          <div class="kanban-vazio">
+            Nenhuma tarefa nesta etapa.
+          </div>
+        `;
+
+        return;
+
+      }
+
+
+      lista.innerHTML =
+        cartoesDaColuna
+          .map(
+            function (cartao) {
+
+              return montarCartaoKanban(
+                cartao
+              );
+
+            }
+          )
+          .join("");
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   CRIAR CARTÃO
+========================================================= */
+
+function montarCartaoKanban(cartao) {
+
+  const nomesStatus = {
+
+    afazer:
+      "A Fazer",
+
+    fazendo:
+      "Fazendo",
+
+    testando:
+      "Testando",
+
+    concluido:
+      "Concluído"
+
+  };
+
+
+  const tarefasConcluidas =
+    Array.isArray(
+      cartao.concluidas
+    )
+      ? cartao.concluidas
+      : [];
+
+
+  const total =
+    cartao.tarefas.length;
+
+
+  const feitas =
+    tarefasConcluidas.length;
+
+
+  const tarefasHTML =
+    cartao.tarefas
+      .map(
+        function (
+          tarefa,
+          indice
+        ) {
+
+          const marcada =
+            tarefasConcluidas.includes(
+              indice
+            )
+              ? "checked"
+              : "";
+
+
+          return `
+            <label class="kanban-tarefa">
+
+              <input
+                type="checkbox"
+                data-kanban-card="${cartao.id}"
+                data-tarefa-kanban="${indice}"
+                ${marcada}
+              >
+
+              <span>
+                ${escaparHTML(tarefa)}
+              </span>
+
+            </label>
+          `;
+
+        }
+      )
+      .join("");
+
+
+  const opcoesStatus =
+    Object.keys(
+      nomesStatus
+    )
+      .map(
+        function (status) {
+
+          const selecionado =
+            cartao.status === status
+              ? "selected"
+              : "";
+
+
+          return `
+            <option
+              value="${status}"
+              ${selecionado}
+            >
+              ${nomesStatus[status]}
+            </option>
+          `;
+
+        }
+      )
+      .join("");
+
+
+  return `
+    <article
+      class="kanban-card"
+      draggable="true"
+      data-kanban-id="${cartao.id}"
+    >
+
+      <div class="kanban-card-topo">
+
+        <span class="kanban-etiqueta">
+          ${feitas}/${total} tarefas
+        </span>
+
+
+        <span
+          class="kanban-arrastar"
+          title="Arraste o cartão"
+        >
+          ⋮⋮
+        </span>
+
+      </div>
+
+
+      <h4>
+        ${escaparHTML(
+          cartao.titulo
+        )}
+      </h4>
+
+
+      <div class="kanban-checklist">
+
+        ${tarefasHTML}
+
+      </div>
+
+
+      <label class="kanban-status-mobile">
+
+        Status:
+
+        <select
+          data-status-card="${cartao.id}"
+        >
+
+          ${opcoesStatus}
+
+        </select>
+
+      </label>
+
+    </article>
+  `;
+
+}
+
+
+/* =========================================================
+   MOVER CARTÃO
+========================================================= */
+
+function moverCartaoKanban(
+  id,
+  novoStatus
+) {
+
+  const statusValidos = [
+    "afazer",
+    "fazendo",
+    "testando",
+    "concluido"
+  ];
+
+
+  if (
+    !statusValidos.includes(
+      novoStatus
+    )
+  ) {
+
+    return;
+
+  }
+
+
+  const cartoes =
+    carregarKanban();
+
+
+  const atualizados =
+    cartoes.map(
+      function (cartao) {
+
+        if (
+          cartao.id === id
+        ) {
+
+          return {
+
+            ...cartao,
+
+            status:
+              novoStatus
+
+          };
+
+        }
+
+
+        return cartao;
+
+      }
+    );
+
+
+  salvarKanban(
+    atualizados
+  );
+
+
+  carregarKanbanNaTela();
+
+}
+
+
+/* =========================================================
+   CHECKLIST DOS CARTÕES
+========================================================= */
+
+function alternarTarefaKanban(
+  id,
+  indice,
+  concluida
+) {
+
+  const cartoes =
+    carregarKanban();
+
+
+  const atualizados =
+    cartoes.map(
+      function (cartao) {
+
+        if (
+          cartao.id !== id
+        ) {
+
+          return cartao;
+
+        }
+
+
+        const concluidas =
+          Array.isArray(
+            cartao.concluidas
+          )
+            ? [
+                ...cartao.concluidas
+              ]
+            : [];
+
+
+        const jaExiste =
+          concluidas.includes(
+            indice
+          );
+
+
+        if (
+          concluida &&
+          !jaExiste
+        ) {
+
+          concluidas.push(
+            indice
+          );
+
+        }
+
+
+        if (
+          !concluida &&
+          jaExiste
+        ) {
+
+          const posicao =
+            concluidas.indexOf(
+              indice
+            );
+
+
+          concluidas.splice(
+            posicao,
+            1
+          );
+
+        }
+
+
+        concluidas.sort(
+          function (a, b) {
+
+            return a - b;
+
+          }
+        );
+
+
+        return {
+
+          ...cartao,
+
+          concluidas:
+            concluidas
+
+        };
+
+      }
+    );
+
+
+  salvarKanban(
+    atualizados
+  );
+
+
+  carregarKanbanNaTela();
 
 }
 
