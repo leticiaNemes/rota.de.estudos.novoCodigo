@@ -1,6 +1,3 @@
-
-
-
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +15,9 @@ body {
   line-height: 1.6;
 }
 
-/* TOPO E MENU */
+/* =========================================================
+   TOPO E MENU
+========================================================= */
 
 .topo {
   background: linear-gradient(90deg, #2563eb, #7c3aed);
@@ -57,7 +56,9 @@ body {
   opacity: 0.8;
 }
 
-/* INÍCIO */
+/* =========================================================
+   INÍCIO
+========================================================= */
 
 .hero {
   min-height: 85vh;
@@ -66,9 +67,18 @@ body {
   grid-template-columns: 1.4fr 1fr;
   gap: 35px;
   align-items: center;
+
   background:
-    radial-gradient(circle at top left, rgba(124, 58, 237, 0.18), transparent 35%),
-    radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.18), transparent 35%),
+    radial-gradient(
+      circle at top left,
+      rgba(124, 58, 237, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(37, 99, 235, 0.18),
+      transparent 35%
+    ),
     #ffffff;
 }
 
@@ -132,7 +142,9 @@ body {
   color: #374151;
 }
 
-/* SEÇÕES */
+/* =========================================================
+   SEÇÕES
+========================================================= */
 
 .secao {
   padding: 70px 8%;
@@ -165,7 +177,9 @@ body {
   color: #4b5563;
 }
 
-/* FORMULÁRIO E RESULTADO */
+/* =========================================================
+   FORMULÁRIO E RESULTADO
+========================================================= */
 
 .area-formulario {
   display: grid;
@@ -238,7 +252,9 @@ body {
   color: #374151;
 }
 
-/* DESTAQUES */
+/* =========================================================
+   DESTAQUES
+========================================================= */
 
 .area-identificada {
   background: #f5f3ff;
@@ -261,7 +277,9 @@ body {
   color: #6d28d9;
 }
 
-/* GRUPO DE ESTUDOS */
+/* =========================================================
+   GRUPO DE ESTUDOS
+========================================================= */
 
 .grupo-estudo {
   margin-top: 24px;
@@ -319,7 +337,9 @@ body {
   color: #374151;
 }
 
-/* DIÁRIO DE ESTUDOS */
+/* =========================================================
+   DIÁRIO DE ESTUDOS
+========================================================= */
 
 .diario-area {
   margin-top: 45px;
@@ -363,6 +383,12 @@ body {
   outline: none;
   font-size: 1rem;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.formulario-diario input:focus,
+.formulario-diario textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .formulario-diario textarea {
@@ -434,281 +460,9 @@ body {
   opacity: 0.9;
 }
 
-/* CARREIRA */
-
-.passos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.passo {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  border-left: 5px solid #2563eb;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  font-weight: bold;
-  color: #374151;
-}
-
-.exterior-box {
-  background: white;
-  border-radius: 22px;
-  padding: 30px;
-  border: 1px solid #e5e7eb;
-}
-
-.exterior-box h3 {
-  color: #2563eb;
-  margin-bottom: 12px;
-}
-
-.exterior-box p {
-  color: #4b5563;
-}
-
-.dicas-grid {
-  margin-top: 22px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.dica {
-  background: #f5f7fb;
-  padding: 20px;
-  border-radius: 16px;
-}
-
-.dica h4 {
-  color: #7c3aed;
-  margin-bottom: 8px;
-}
-
-.dica p {
-  color: #4b5563;
-}
-
-.dica-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  transition: 0.3s;
-  border: 1px solid transparent;
-}
-
-.dica-link:hover {
-  transform: translateY(-4px);
-  border-color: #7c3aed;
-  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.15);
-}
-
-.dica-link span {
-  display: inline-block;
-  margin-top: 12px;
-  color: #2563eb;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-/* GUIAS */
-
-.guias-exterior {
-  background: #ffffff;
-}
-
-.guia-card {
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 22px;
-  padding: 30px;
-  margin-bottom: 28px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  scroll-margin-top: 120px;
-}
-
-.guia-card h3 {
-  color: #2563eb;
-  font-size: 1.5rem;
-  margin-bottom: 18px;
-}
-
-.guia-card h4 {
-  color: #111827;
-  margin-top: 22px;
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.guia-card p {
-  color: #374151;
-  margin-bottom: 12px;
-}
-
-.guia-card ol,
-.guia-card ul {
-  padding-left: 22px;
-  margin-bottom: 16px;
-}
-
-.guia-card li {
-  color: #374151;
-  margin-bottom: 8px;
-}
-
-.exemplo-guia {
-  background: white;
-  border: 1px solid #dbeafe;
-  border-radius: 16px;
-  padding: 16px;
-  margin: 12px 0 18px;
-}
-
-.exemplo-guia p {
-  color: #374151;
-  margin-bottom: 8px;
-}
-
-.exemplo-guia p:last-child {
-  margin-bottom: 0;
-}
-
-.guia-dica {
-  background: #eef2ff;
-  color: #3730a3;
-  border-left: 5px solid #7c3aed;
-  padding: 14px 16px;
-  border-radius: 14px;
-  font-weight: bold;
-  margin-top: 16px;
-}
-
-.voltar-guia {
-  display: inline-block;
-  margin-top: 18px;
-  color: white;
-  background: linear-gradient(90deg, #2563eb, #7c3aed);
-  padding: 11px 18px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.voltar-guia:hover {
-  opacity: 0.9;
-}
-
-/* RODAPÉ */
-
-.rodape {
-  background: #111827;
-  color: white;
-  text-align: center;
-  padding: 24px 8%;
-}
-
-.rodape p {
-  color: white;
-}
-
-/* RESPONSIVO TABLET */
-
-@media (max-width: 900px) {
-  .hero,
-  .area-formulario {
-    grid-template-columns: 1fr;
-  }
-
-  .passos,
-  .dicas-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-texto h2 {
-    font-size: 2.3rem;
-  }
-}
-
-/* RESPONSIVO CELULAR */
-
-@media (max-width: 650px) {
-  .topo {
-    padding: 16px 5%;
-  }
-
-  .menu {
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .menu ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .menu a {
-    font-size: 0.9rem;
-  }
-
-  .hero,
-  .secao {
-    padding: 50px 5%;
-  }
-
-  .hero-texto h2 {
-    font-size: 2rem;
-  }
-
-  .hero-texto p {
-    font-size: 1rem;
-  }
-
-  .passos,
-  .dicas-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .titulo-secao h2 {
-    font-size: 1.8rem;
-  }
-
-  .formulario,
-  .resultado-plano,
-  .grupo-estudo,
-  .hero-card,
-  .exterior-box,
-  .guia-card,
-  .diario-area {
-    padding: 22px;
-  }
-
-  .botao-principal,
-  .botao-grupo,
-  .voltar-guia {
-    width: 100%;
-    text-align: center;
-  }
-
-  .formulario-diario {
-    grid-template-columns: 1fr;
-  }
-
-  .formulario-diario button {
-    width: 100%;
-  }
-
-  .guia-card {
-    scroll-margin-top: 150px;
-  }
-
-  .guia-card h3 {
-    font-size: 1.3rem;
-  }
-}
-/* QUIZ E METAS SEMANAIS */
+/* =========================================================
+   QUIZ
+========================================================= */
 
 .recurso-card {
   max-width: 980px;
@@ -878,11 +632,16 @@ body {
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .botao-secundario:hover {
   background: #f5f3ff;
 }
+
+/* =========================================================
+   METAS SEMANAIS
+========================================================= */
 
 .formulario-metas {
   display: grid;
@@ -1024,7 +783,451 @@ body {
   padding: 22px;
 }
 
+/* =========================================================
+   KANBAN
+========================================================= */
+
+#kanban {
+  scroll-margin-top: 100px;
+}
+
+.kanban-acoes {
+  max-width: 1400px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kanban-acoes p {
+  color: #4b5563;
+}
+
+.kanban-acoes .botao-secundario {
+  margin-top: 0;
+}
+
+/* QUADRO */
+
+.kanban-board {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(230px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+/* COLUNAS */
+
+.kanban-coluna {
+  min-height: 430px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 14px;
+  transition: 0.2s;
+}
+
+.kanban-coluna[data-status="afazer"] {
+  border-top: 5px solid #64748b;
+}
+
+.kanban-coluna[data-status="fazendo"] {
+  border-top: 5px solid #2563eb;
+}
+
+.kanban-coluna[data-status="testando"] {
+  border-top: 5px solid #f59e0b;
+}
+
+.kanban-coluna[data-status="concluido"] {
+  border-top: 5px solid #22c55e;
+}
+
+.kanban-destino {
+  background: #eef2ff;
+  border-color: #7c3aed;
+  transform: translateY(-2px);
+}
+
+/* CABEÇALHO DO KANBAN */
+
+.kanban-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.kanban-cabecalho h3 {
+  color: #111827;
+  font-size: 1.05rem;
+}
+
+.kanban-contador {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  color: #6d28d9;
+  font-size: 0.82rem;
+  font-weight: bold;
+}
+
+/* LISTA DE CARTÕES */
+
+.kanban-lista {
+  display: grid;
+  gap: 12px;
+}
+
+/* CARTÃO */
+
+.kanban-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.05);
+  cursor: grab;
+  transition: 0.2s;
+}
+
+.kanban-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.kanban-card:active {
+  cursor: grabbing;
+}
+
+.kanban-card.arrastando {
+  opacity: 0.5;
+}
+
+.kanban-card-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.kanban-etiqueta {
+  display: inline-block;
+  background: #f5f3ff;
+  color: #6d28d9;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.kanban-arrastar {
+  color: #94a3b8;
+  font-weight: bold;
+  letter-spacing: -2px;
+  user-select: none;
+}
+
+.kanban-card h4 {
+  color: #111827;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+/* CHECKLIST */
+
+.kanban-checklist {
+  display: grid;
+  gap: 8px;
+}
+
+.kanban-tarefa {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #475569;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.kanban-tarefa input {
+  margin-top: 2px;
+  accent-color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.kanban-tarefa input:checked + span {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+/* STATUS */
+
+.kanban-status-mobile {
+  display: block;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.kanban-status-mobile select {
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: white;
+  color: #374151;
+  outline: none;
+}
+
+.kanban-status-mobile select:focus {
+  border-color: #7c3aed;
+}
+
+/* COLUNA VAZIA */
+
+.kanban-vazio {
+  padding: 20px 12px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   CARREIRA
+========================================================= */
+
+.passos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.passo {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  font-weight: bold;
+  color: #374151;
+}
+
+.exterior-box {
+  background: white;
+  border-radius: 22px;
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+}
+
+.exterior-box h3 {
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+.exterior-box p {
+  color: #4b5563;
+}
+
+.dicas-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.dica {
+  background: #f5f7fb;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.dica h4 {
+  color: #7c3aed;
+  margin-bottom: 8px;
+}
+
+.dica p {
+  color: #4b5563;
+}
+
+.dica-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.dica-link:hover {
+  transform: translateY(-4px);
+  border-color: #7c3aed;
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.15);
+}
+
+.dica-link span {
+  display: inline-block;
+  margin-top: 12px;
+  color: #2563eb;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   GUIAS
+========================================================= */
+
+.guias-exterior {
+  background: #ffffff;
+}
+
+.guia-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 30px;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  scroll-margin-top: 120px;
+}
+
+.guia-card h3 {
+  color: #2563eb;
+  font-size: 1.5rem;
+  margin-bottom: 18px;
+}
+
+.guia-card h4 {
+  color: #111827;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.guia-card p {
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.guia-card ol,
+.guia-card ul {
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+
+.guia-card li {
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.exemplo-guia {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0 18px;
+}
+
+.exemplo-guia p {
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.exemplo-guia p:last-child {
+  margin-bottom: 0;
+}
+
+.guia-dica {
+  background: #eef2ff;
+  color: #3730a3;
+  border-left: 5px solid #7c3aed;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.voltar-guia {
+  display: inline-block;
+  margin-top: 18px;
+  color: white;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  padding: 11px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.voltar-guia:hover {
+  opacity: 0.9;
+}
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.rodape {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 24px 8%;
+}
+
+.rodape p {
+  color: white;
+}
+
+/* =========================================================
+   RESPONSIVO - TELAS MÉDIAS
+========================================================= */
+
+@media (max-width: 1180px) {
+
+  .kanban-board {
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+  }
+
+}
+
+/* =========================================================
+   RESPONSIVO - TABLET
+========================================================= */
+
 @media (max-width: 900px) {
+
+  .hero,
+  .area-formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .passos,
+  .dicas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-texto h2 {
+    font-size: 2.3rem;
+  }
+
   .formulario-metas {
     grid-template-columns: 1fr 1fr;
   }
@@ -1033,14 +1236,105 @@ body {
     grid-column: 1 / -1;
     width: fit-content;
   }
+
 }
 
+/* =========================================================
+   RESPONSIVO - CELULAR
+========================================================= */
+
 @media (max-width: 650px) {
+
+  .topo {
+    padding: 16px 5%;
+  }
+
+  .menu {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .menu ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .menu a {
+    font-size: 0.9rem;
+  }
+
+  .hero,
+  .secao {
+    padding: 50px 5%;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-texto h2 {
+    font-size: 2rem;
+  }
+
+  .hero-texto p {
+    font-size: 1rem;
+  }
+
+  .passos,
+  .dicas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .titulo-secao h2 {
+    font-size: 1.8rem;
+  }
+
+  .formulario,
+  .resultado-plano,
+  .grupo-estudo,
+  .hero-card,
+  .exterior-box,
+  .guia-card,
+  .diario-area,
   .recurso-card {
     padding: 22px;
   }
 
-  .quiz-topo,
+  .botao-principal,
+  .botao-grupo,
+  .voltar-guia {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* DIÁRIO */
+
+  .formulario-diario {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-diario label:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .formulario-diario button {
+    width: 100%;
+  }
+
+  /* QUIZ */
+
+  .quiz-topo {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .botao-secundario {
+    width: 100%;
+  }
+
+  /* METAS */
+
   .progresso-cabecalho,
   .meta-card {
     align-items: flex-start;
@@ -1060,8 +1354,49 @@ body {
     gap: 12px;
   }
 
-  .botao-apagar-meta,
-  .botao-secundario {
+  .botao-apagar-meta {
     width: 100%;
   }
+
+  /* KANBAN */
+
+  #kanban {
+    scroll-margin-top: 150px;
+  }
+
+  .kanban-acoes {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .kanban-acoes .botao-secundario {
+    width: 100%;
+  }
+
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  .kanban-coluna {
+    min-height: auto;
+  }
+
+  .kanban-card {
+    cursor: default;
+  }
+
+  .kanban-arrastar {
+    display: none;
+  }
+
+  /* GUIAS */
+
+  .guia-card {
+    scroll-margin-top: 150px;
+  }
+
+  .guia-card h3 {
+    font-size: 1.3rem;
+  }
+
 }
